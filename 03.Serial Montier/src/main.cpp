@@ -18,10 +18,21 @@ void loop() {
   if(command == "RED"){
     digitalWrite(redLED,HIGH);
     digitalWrite(yelloLED,LOW);
-    delay(500);
     Serial.println("Red LED on");
     Serial.println("Yello LED Off");
+    delay(500);
   }else if(command == "YELLO"){
+    digitalWrite(yelloLED,HIGH);
+    digitalWrite(redLED,LOW);
+    Serial.println("Yello LED on");
+    Serial.println("Red LED Off");
+    delay(500);
+  }else{
+    Serial.println("Enter Curect Command!!");
+    digitalWrite(yelloLED,LOW);
+    digitalWrite(redLED,LOW);
+    Serial.println("Yello and Red LEDS Off ");
+    delay(500);
 
   }
 
