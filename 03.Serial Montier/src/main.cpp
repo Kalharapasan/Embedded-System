@@ -1,13 +1,13 @@
 #include <Arduino.h>
 const int redLED=13;
-const int yelloLED=12;
+const int yellowLED=12;
 
 void setup() {
 
   pinMode(redLED,OUTPUT);
-  pinMode(yelloLED,OUTPUT);
+  pinMode(yellowLED,OUTPUT);
   Serial.begin(9600);
-  Serial.println("Commands : RED,YELLO");
+  Serial.println("Commands : RED On for =R,YELLOW on for =Y");
  
  
 }
@@ -15,25 +15,20 @@ void setup() {
 void loop() {
 
   String command = Serial.readStringUntil('\n');
-  if(command == "RED"){
+  if(command == "R"){
     digitalWrite(redLED,HIGH);
-    digitalWrite(yelloLED,LOW);
+    digitalWrite(yellowLED,LOW);
     Serial.println("Red LED on");
-    Serial.println("Yello LED Off");
-    delay(500);
-  }else if(command == "YELLO"){
-    digitalWrite(yelloLED,HIGH);
+    
+  }else if(command == "Y"){
+    digitalWrite(yellowLED,HIGH);
     digitalWrite(redLED,LOW);
-    Serial.println("Yello LED on");
-    Serial.println("Red LED Off");
-    delay(500);
+    Serial.println("Yellow LED on");
+    
   }else{
-    Serial.println("Enter Curect Command!!");
-    digitalWrite(yelloLED,LOW);
+    Serial.println("Enter Correct Command!!");
+    digitalWrite(yellowLED,LOW);
     digitalWrite(redLED,LOW);
-    Serial.println("Yello and Red LEDS Off ");
-    delay(500);
-
   }
 
 }
