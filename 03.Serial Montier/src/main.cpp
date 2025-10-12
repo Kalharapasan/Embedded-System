@@ -15,6 +15,15 @@ void setup() {
 void loop() {
 
   String command = Serial.readStringUntil('\n');
+  if(command == "RED"){
+    digitalWrite(redLED,HIGH);
+    digitalWrite(yelloLED,LOW);
+    delay(500);
+    Serial.println("Red LED on");
+    Serial.println("Yello LED Off");
+  }else if(command == "YELLO"){
+
+  }
 
 }
 
