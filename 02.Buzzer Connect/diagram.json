@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "author": "Pasan Kalhara",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 115.8, "left": -0.6, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -103.2,
+      "left": 107.4,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.1", "bz1:1", "black", [ "v-115.2", "h-18.9", "v-38.4" ] ],
+    [ "bz1:2", "uno:13", "green", [ "v0", "h18.8", "v28.8", "h-28.8" ] ]
+  ],
+  "dependencies": {}
+}
