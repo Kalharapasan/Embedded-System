@@ -7,10 +7,14 @@ void setup() {
   pinMode(redLED,OUTPUT);
   pinMode(yelloLED,OUTPUT);
   Serial.begin(9600);
+  Serial.println("Commands : RED,YELLO");
  
  
 }
 
 void loop() {
-}/
+
+  String command = Serial.readStringUntil('\n');
+
+}
 
