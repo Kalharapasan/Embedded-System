@@ -5,6 +5,8 @@
 #define DS1307_ADDRESS 0x68
 
 LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
+
+// Arrays for creating segments and customizing numbers
 byte segment[8][8] =
 {
   { B01111,  B11111,  B11111,  B11111,  B11111,  B11111,  B11111,  B11111 },
@@ -22,6 +24,9 @@ byte zero = 0x00;
 int col = 0;
 
 int number, lastMin1, lastMin2, lastHour1, lastHour2;
+
+// Forward declaration for showClock
+void showClock();
 
 void setup()
 {
