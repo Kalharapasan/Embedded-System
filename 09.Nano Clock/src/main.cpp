@@ -5,8 +5,6 @@
 #define DS1307_ADDRESS 0x68
 
 LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
-
-// Arrays for creating segments and customizing numbers
 byte segment[8][8] =
 {
   { B01111,  B11111,  B11111,  B11111,  B11111,  B11111,  B11111,  B11111 },
@@ -24,53 +22,44 @@ byte zero = 0x00;
 int col = 0;
 
 int number, lastMin1, lastMin2, lastHour1, lastHour2;
-
-// Forward declaration for showClock
 void showClock();
 
 void setup()
 {
   Wire.begin();
-  // Initializes the LCD
   lcd.begin(16, 2);
-
-  // Associates each created segment with a number
   for (byte i = 0; i < 8; i++) {
     lcd.createChar(i, segment[i]);
   }
-
-  // The line below can be removed after setting the date and time
-  // setDateTime();
 }
 
 void loop()
 {
-  // Extracts the time from the DS1307 and shows it on the LCD
   showClock();
   delay(1000);
 }
 
-byte convertToBCD(byte val) { // Converts the decimal number to BCD
+byte convertToBCD(byte val) { 
   return ( (val / 10 * 16) + (val % 10) );
 }
 
-byte convertToDecimal(byte val) { // Converts from BCD to decimal
+byte convertToDecimal(byte val) { 
   return ( (val / 16 * 10) + (val % 16) );
 }
 
-void digit0() // Set the segments to the number 0
+void digit0() 
 {
-  lcd.setCursor(col, 0); // Select the top line
-  lcd.write((byte)0);  // Segment 0 selected
-  lcd.write(1);  // Segment 1 selected
+  lcd.setCursor(col, 0);
+  lcd.write((byte)0); 
+  lcd.write(1);  
   lcd.write(2);
-  lcd.setCursor(col, 1); // Select the bottom line
+  lcd.setCursor(col, 1); 
   lcd.write(3);
   lcd.write(4);
   lcd.write(5);
 }
 
-void digit1() // Set the segments to the number 1
+void digit1() 
 {
   lcd.setCursor(col, 0);
   lcd.write(1);
@@ -79,7 +68,7 @@ void digit1() // Set the segments to the number 1
   lcd.write(5);
 }
 
-void digit2() // Set the segments to the number 2
+void digit2()
 {
   lcd.setCursor(col, 0);
   lcd.write(6);
@@ -91,7 +80,7 @@ void digit2() // Set the segments to the number 2
   lcd.write(7);
 }
 
-void digit3()  // Set the segments to the number 3
+void digit3() 
 {
   lcd.setCursor(col, 0);
   lcd.write(6);
@@ -103,7 +92,7 @@ void digit3()  // Set the segments to the number 3
   lcd.write(5);
 }
 
-void digit4()  // Set the segments to the number 4
+void digit4() 
 {
   lcd.setCursor(col, 0);
   lcd.write(3);
@@ -113,7 +102,7 @@ void digit4()  // Set the segments to the number 4
   lcd.write(5);
 }
 
-void digit5()  // Set the segments to the number 5
+void digit5() 
 {
   lcd.setCursor(col, 0);
   lcd.write((byte)0);
@@ -125,7 +114,7 @@ void digit5()  // Set the segments to the number 5
   lcd.write(5);
 }
 
-void digit6()  // Set the segments to the number 6
+void digit6() 
 {
   lcd.setCursor(col, 0);
   lcd.write((byte)0);
@@ -137,7 +126,7 @@ void digit6()  // Set the segments to the number 6
   lcd.write(5);
 }
 
-void digit7() // Set the segments to the number 7
+void digit7() 
 {
   lcd.setCursor(col, 0);
   lcd.write(1);
@@ -147,7 +136,7 @@ void digit7() // Set the segments to the number 7
   lcd.write((byte)0);
 }
 
-void digit8()  // Set the segments to the number 8
+void digit8()
 {
   lcd.setCursor(col, 0);
   lcd.write((byte)0);
@@ -159,7 +148,7 @@ void digit8()  // Set the segments to the number 8
   lcd.write(5);
 }
 
-void digit9() // Set the segments to the number 9
+void digit9()
 {
   lcd.setCursor(col, 0);
   lcd.write((byte)0);
@@ -169,7 +158,7 @@ void digit9() // Set the segments to the number 9
   lcd.write((byte)5);
 }
 
-void showDigit() // Shows the number in the position defined by "X"
+void showDigit()
 {
   switch (number) {
     case 0: digit0();
@@ -225,7 +214,6 @@ void showClock()
   col = 0;
   number = hours / 10;
 
-  // Conditional to avoid overlapping characters
   if (lastHour1 != minutes % 10) {
     lcd.setCursor(0, 0);
     lcd.print("   ");
@@ -234,7 +222,7 @@ void showClock()
     lastHour1 = minutes % 10;
   }
 
-  showDigit(); // Show the customized number on the display
+  showDigit();
 
   col = 4;
   number = hours % 10;
@@ -276,21 +264,18 @@ void showClock()
   showDigit();
 }
 
-void setDateTime()   // Set the date and time of the DS1307
+void setDateTime() 
 {
-  byte seconds = 00; // Values ​​from 0 to 59
-  byte minutes = 00; // Values ​​from 0 to 59
-  byte hours = 00; // Values ​​from 0 to 23
-  byte dayWeek = 1; // Values ​​from 0 to 6, where 0 = Domgino, 1 = Monday
-  byte dayMonth = 17; // Values ​​from 1 to 31
-  byte month = 5; // Values ​​from 1 to 12
-  byte year = 21; // Values ​​from 0 to 99
+  byte seconds = 00; 
+  byte minutes = 00; 
+  byte hours = 00;
+  byte dayWeek = 1;
+  byte dayMonth = 17; 
+  byte month = 5;
+  byte year = 21; 
 
   Wire.beginTransmission(DS1307_ADDRESS);
-  Wire.write(zero); // Stop at CI so that it can receive data
-
-  // The lines below write the values ​​of date and
-  // time they were placed in the variables above
+  Wire.write(zero); 
   Wire.write(convertToBCD(seconds));
   Wire.write(convertToBCD(minutes));
   Wire.write(convertToBCD(hours));
@@ -298,6 +283,6 @@ void setDateTime()   // Set the date and time of the DS1307
   Wire.write(convertToBCD(dayMonth));
   Wire.write(convertToBCD(month));
   Wire.write(convertToBCD(year));
-  Wire.write(zero); // Start at CI
+  Wire.write(zero); 
   Wire.endTransmission();
 }
