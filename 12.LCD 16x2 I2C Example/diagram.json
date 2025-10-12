@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "ktp pwr",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 58.2, "left": 28.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -147.2,
+      "left": 188,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "uno:A4.2", "lcd1:SDA", "green", [ "v0" ] ],
+    [ "uno:A5.2", "lcd1:SCL", "green", [ "v0" ] ],
+    [ "uno:GND.1", "lcd1:GND", "black", [ "v0" ] ],
+    [ "uno:5V", "lcd1:VCC", "red", [ "v28.7", "h-178.6", "v-374.4" ] ]
+  ],
+  "dependencies": {}
+}
