@@ -26,3 +26,4 @@ void loop() {
   if (key != NO_KEY) {
     Serial.println(key);
   }
+}
