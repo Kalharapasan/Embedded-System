@@ -1,18 +1,16 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+const int redLED=13;
+const int yelloLED=12;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+
+  pinMode(redLED,OUTPUT);
+  pinMode(yelloLED,OUTPUT);
+  Serial.begin(9600);
+ 
+ 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+}/
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
