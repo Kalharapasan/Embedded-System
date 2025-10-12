@@ -1,18 +1,24 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+LiquidCrystal_I2C MyLCD(0x27, 20, 4); 
+
+void setup()
+{
+  MyLCD.init();
+  MyLCD.backlight();
+  MyLCD.setCursor(0, 0);
+  MyLCD.print("    Hello World!");
+  MyLCD.setCursor(0, 1);
+  MyLCD.print("    I2C LCD 20x4");
+  MyLCD.setCursor(0, 2);
+  MyLCD.print("  Arduino Tutorial");
+  MyLCD.setCursor(0, 3);
+  MyLCD.print("  DeepBlueMbedded");
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void loop()
+{
 }
