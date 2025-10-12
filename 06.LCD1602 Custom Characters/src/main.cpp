@@ -1,18 +1,23 @@
 #include <Arduino.h>
+#include <LiquidCrystal.h>
 
-// put function declarations here:
-int myFunction(int, int);
+LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
+
+uint8_t heart[8] = {
+  0b00000,
+  0b01010,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b01110,
+  0b00100,
+  0b00000,
+};
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  lcd.createChar(3, heart);
+  lcd.begin(16, 2);
+  lcd.print("  I \x03 Arduino");
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
+void loop() { }
