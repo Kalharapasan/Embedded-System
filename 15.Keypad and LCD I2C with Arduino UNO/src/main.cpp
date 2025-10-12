@@ -1,5 +1,4 @@
 #include <Arduino.h>
-
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <Keypad.h>
@@ -26,6 +25,15 @@ char inputArray[maxInput];
 int arrayIndex = 0; 
 char firstline[halfMaxInput];
 char secondline[halfMaxInput];
+
+// Forward declarations (prototypes) to ensure functions are known before use
+void addCharacter(char key);
+void deleteLastCharacter();
+void clearArray();
+void splitArray();
+void printToLCD();
+void displayErrorMessage(const char *message);
+void clearLCD();
 
 void setup() {
   lcd.init();
