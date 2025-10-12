@@ -2,7 +2,7 @@
 #include <EEPROM.h>
 #include "SafeState.h"
 
-/* Safe state */
+
 #define EEPROM_ADDR_LOCKED   0
 #define EEPROM_ADDR_CODE_LEN 1
 #define EEPROM_ADDR_CODE     2

@@ -15,4 +15,4 @@ class SafeState {
     bool _locked;
 };
 
-#endif /* SAFESTATE_H */
+#endif 
