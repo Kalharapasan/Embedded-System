@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -18.6, "left": 18.6, "attrs": {} },
+    { "type": "wokwi-lcd2004", "id": "lcd", "top": 242, "left": 50, "attrs": { "pins": "i2c" } }
+  ],
+  "connections": [
+    [ "uno:GND.2", "lcd:GND", "black", [ "v14", "*", "h-20" ] ],
+    [ "uno:5V", "lcd:VCC", "red", [ "v18", "*", "h-16" ] ],
+    [ "uno:A4", "lcd:SDA", "green", [ "v22", "*", "h-12" ] ],
+    [ "uno:A5", "lcd:SCL", "blue", [ "v26", "*", "h-8" ] ]
+  ],
+  "dependencies": {}
+}
