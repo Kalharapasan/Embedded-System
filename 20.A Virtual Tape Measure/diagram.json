@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -0.67, "left": 32.64, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": 256, "left": 63.2, "attrs": { "pins": "i2c" } },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": 90.42,
+      "left": 347.7,
+      "attrs": { "distance": "250" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.3", "ultrasonic:GND", "black", [ "v30", "h120", "*" ] ],
+    [ "uno:2", "ultrasonic:ECHO", "green", [ "v-20", "*", "h-120", "v20" ] ],
+    [ "uno:3", "ultrasonic:TRIG", "purple", [ "v-24", "*", "h-108", "v16" ] ],
+    [ "uno:5V", "ultrasonic:VCC", "red", [ "v18", "h120", "*" ] ],
+    [ "uno:GND.2", "lcd:GND", "black", [ "v14", "*", "h-20" ] ],
+    [ "uno:5V", "lcd:VCC", "red", [ "v18", "*", "h-16" ] ],
+    [ "uno:A4", "lcd:SDA", "green", [ "v22", "*", "h-12" ] ],
+    [ "uno:A5", "lcd:SCL", "blue", [ "v26", "*", "h-8" ] ]
+  ],
+  "dependencies": {}
+}
