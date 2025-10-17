@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 275.99,
+      "left": 47.73,
+      "rotate": 0,
+      "hide": false,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 165.87,
+      "left": 142.81,
+      "rotate": 90,
+      "hide": false,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led",
+      "top": 87.29,
+      "left": 147.05,
+      "rotate": 0,
+      "hide": false,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": 108.43,
+      "left": 196.5,
+      "rotate": 0,
+      "hide": false,
+      "attrs": { "distance": "180" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.1", "ultrasonic:GND", "black", [ "v-8", "*", "v8" ] ],
+    [ "uno:2", "ultrasonic:ECHO", "green", [] ],
+    [ "uno:3", "ultrasonic:TRIG", "purple", [ "*", "v4" ] ],
+    [ "uno:5V", "ultrasonic:VCC", "red", [ "v16", "h-96", "*", "v12" ] ],
+    [ "uno:GND.1", "led:C", "black", [] ],
+    [ "r1:1", "led:A", "blue", [] ],
+    [ "uno:13", "r1:2", "blue", [] ]
+  ]
+}
