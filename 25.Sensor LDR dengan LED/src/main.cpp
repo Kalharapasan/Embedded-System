@@ -1,18 +1,26 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+int ldrPin = A0;     // LDR pin
+int ldrVal = 0;      // Value of LDR
+int ledPin = 2;     // Build in LED pin
 
+const float GAMMA = 0.7;
+const float RL10 = 50;
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);  
+   pinMode(2, OUTPUT);
 }
-
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  ldrVal = analogRead(ldrPin); 
+   float voltage = ldrVal / 1024. * 5;
+  float resistance = 2000 * voltage / (1 - voltage / 5);
+  float lux = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+ if (lux < 200) {            
+    digitalWrite(ledPin, HIGH);  
+  } else {
+    digitalWrite(ledPin, LOW);  
+  }
+  Serial.println(lux);      
+  delay(1000);                 
 }
