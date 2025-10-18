@@ -1,18 +1,15 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+const float BETA = 3950; 
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  int analogValue = analogRead(A0);
+  float celsius = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
+  Serial.print("Temperature: ");
+  Serial.print(celsius);
+  Serial.println(" ℃");
+  delay(1000);
 }
