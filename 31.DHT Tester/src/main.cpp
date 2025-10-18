@@ -1,18 +1,39 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "DHT.h"
+#define DHTPIN 2    
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);
+  Serial.println(F("DHTxx test!"));
+
+  dht.begin();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  
+  delay(2000);
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  float f = dht.readTemperature(true);
+  if (isnan(h) || isnan(t) || isnan(f)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return;
+  }
+  float hif = dht.computeHeatIndex(f, h);
+  float hic = dht.computeHeatIndex(t, h, false);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  Serial.print(F("Humidity: "));
+  Serial.print(h);
+  Serial.print(F("%  Temperature: "));
+  Serial.print(t);
+  Serial.print(F("°C "));
+  Serial.print(f);
+  Serial.print(F("°F  Heat index: "));
+  Serial.print(hic);
+  Serial.print(F("°C "));
+  Serial.print(hif);
+  Serial.println(F("°F"));
 }
