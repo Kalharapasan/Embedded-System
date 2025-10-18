@@ -22,6 +22,9 @@ byte sensor = 0;
 
 unsigned long timer, interval = 250; 
 
+// Function declaration
+void myPing(int SR04);
+
 void setup() {
   Serial.begin (115200);
   for (auto & sonar : sonars)  { 
