@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "author": "Ravindu Shiranga",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -9, "left": -19.8, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -113.7,
+      "left": 34.3,
+      "attrs": { "distance": "400" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -109.2,
+      "left": 282.2,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -109.2,
+      "left": 320.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -118.4,
+      "left": -320.8,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "ultrasonic1:VCC", "uno:5V", "blue", [ "v230.4", "h38.4" ] ],
+    [ "ultrasonic1:GND", "uno:GND.2", "green", [ "v220.8", "h18" ] ],
+    [ "ultrasonic1:TRIG", "uno:7", "red", [ "v9.6", "h57.2" ] ],
+    [ "ultrasonic1:ECHO", "uno:2", "gold", [ "v9.6", "h95.2" ] ],
+    [ "led1:C", "led2:C", "green", [ "v9.6", "h38.8" ] ],
+    [ "led1:C", "uno:GND.2", "green", [ "v278.4", "h-143.6" ] ],
+    [ "led1:A", "uno:4", "blue", [ "v38.4", "h9.6" ] ],
+    [ "led2:A", "uno:8", "blue", [ "v48", "h-9.6" ] ],
+    [ "lcd1:GND", "uno:GND.2", "green", [ "h-38.4", "v326.4", "h518.4", "v-9.6" ] ],
+    [ "lcd1:VCC", "uno:5V", "blue", [ "h-28.8", "v307.3", "h499.2" ] ],
+    [ "lcd1:SDA", "uno:A4", "gold", [ "h-19.2", "v288.2", "h576" ] ],
+    [ "lcd1:SCL", "uno:A5", "red", [ "h-9.6", "v269.1", "h393.6", "v38.4", "h182.4", "v-9.6" ] ]
+  ],
+  "dependencies": {}
+}
