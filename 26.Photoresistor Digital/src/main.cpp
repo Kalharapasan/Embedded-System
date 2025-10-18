@@ -1,18 +1,23 @@
 #include <Arduino.h>
+#include <LiquidCrystal_I2C.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define LDR_PIN 2
+
+LiquidCrystal_I2C lcd(0x27, 20, 4);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  pinMode(LDR_PIN, INPUT);
+  lcd.init();
+  lcd.backlight();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  lcd.setCursor(2, 0);
+  lcd.print("Room: ");
+  if (digitalRead(LDR_PIN) == LOW) {
+    lcd.print("Light!");
+  } else {
+    lcd.print("Dark  ");
+  }
+  delay(100);
 }
