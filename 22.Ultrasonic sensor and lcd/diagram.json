@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "David Mdht",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 96.6, "left": -87, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -102.17, "left": -3.2, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -33.57, "left": 325.9, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -78.1, "left": -105.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "lcd1:VSS", "uno:GND.1", "black", [ "v38.59", "h5.27" ] ],
+    [ "lcd1:VDD", "uno:5V", "red", [ "v33.93", "h163.77", "v232", "h-118" ] ],
+    [ "lcd1:RS", "uno:12", "orange", [ "h-0.3", "v38.4", "h-9.5" ] ],
+    [ "lcd1:E", "uno:11", "gold", [ "v48", "h-19.8" ] ],
+    [ "lcd1:D4", "uno:5", "green", [ "v48", "h-3.8" ] ],
+    [ "lcd1:D5", "uno:4", "green", [ "v47.93", "h5.1" ] ],
+    [ "lcd1:D6", "uno:3", "green", [ "v47.26", "h-1.06" ] ],
+    [ "lcd1:D7", "uno:2", "green", [ "v49.26", "h0.1" ] ],
+    [ "ultrasonic1:VCC", "uno:5V", "red", [ "v286.07", "h-325.53" ] ],
+    [ "ultrasonic1:GND", "uno:GND.3", "black", [ "v279.4", "h-337.53" ] ],
+    [ "ultrasonic1:TRIG", "uno:9", "violet", [ "v24.74", "h-328.2" ] ],
+    [ "ultrasonic1:ECHO", "uno:8", "gray", [ "v31.4", "h-332.2" ] ],
+    [ "lcd1:RW", "lcd1:VSS", "black", [ "v21.86", "h-38.5", "v-21.86" ] ],
+    [ "lcd1:V0", "pot1:SIG", "magenta", [ "v28.8", "h-86.7" ] ],
+    [ "pot1:GND", "uno:GND.2", "black", [ "v67.2", "h-38.4", "v249.6", "h197.7" ] ],
+    [ "pot1:VCC", "uno:5V", "red", [ "v76.8", "h-48.8", "v230.4", "h163.2" ] ],
+    [ "lcd1:A", "uno:5V", "red", [ "v28.8", "h47.9", "v259.2", "h-138.2" ] ],
+    [ "lcd1:K", "uno:GND.3", "black", [ "v19.2", "h48", "v259.2", "h-124.8" ] ]
+  ],
+  "dependencies": {}
+}
