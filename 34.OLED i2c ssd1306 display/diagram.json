@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "Hemanth B",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -53.33, "left": 4.67, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled1", "top": 178.21, "left": 117.97, "attrs": {} }
+  ],
+  "connections": [
+    [ "oled1:SDA", "uno:A4", "green", [ "v-18.64", "h54.13" ] ],
+    [ "oled1:SCL", "uno:A5", "green", [ "v-27.97", "h86.63" ] ],
+    [ "uno:GND.3", "oled1:GND", "black", [ "v13.86", "h-26.67" ] ],
+    [ "uno:5V", "oled1:VCC", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
