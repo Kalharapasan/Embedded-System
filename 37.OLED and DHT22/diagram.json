@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "author": "Anderson Costa",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-attiny85", "id": "tiny", "top": 160, "left": 47, "attrs": {} },
+    { "type": "board-ssd1306", "id": "ssd1306", "top": 220, "left": 40, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht", "top": 0, "left": 144, "attrs": {} }
+  ],
+  "connections": [
+    [ "tiny:GND", "ssd1306:GND", "black", [ "v8", "*", "h0" ] ],
+    [ "tiny:VCC", "ssd1306:VCC", "red", [ "v-4", "h-12", "v52", "*", "h0" ] ],
+    [ "tiny:PB0", "ssd1306:SDA", "orange", [ "v-5", "*", "h0" ] ],
+    [ "tiny:PB2", "ssd1306:SCL", "purple", [ "v-12", "*", "h0" ] ],
+    [ "tiny:GND", "dht:GND", "black", [ "v8", "*", "h0" ] ],
+    [ "tiny:PB1", "dht:SDA", "green", [ "v-20", "*", "h0" ] ],
+    [ "tiny:VCC", "dht:VCC", "red", [ "v-27.64", "h98.29" ] ]
+  ]
+}
