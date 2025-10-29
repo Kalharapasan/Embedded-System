@@ -1,11 +1,8 @@
-#include <Arduino.h>
-#include <DHT.h>
+#include <dht.h>
 #include <TinyWireM.h>
 #include <Tiny4kOLED.h>
-#define DHT22_PIN PB1
-#define DHTTYPE DHT22
 
-DHT dht(DHT22_PIN, DHTTYPE);
+#define DHT22_PIN PB1
 
 const unsigned char  img_heart_small[] PROGMEM = {
   0x00, 0x00, 0xc0, 0xe0, 0xe0, 0xe0, 0xc0, 0x80, 0x80, 0x80, 0xc0, 0xe0, 0xe0, 0xe0, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x1f, 0x0f, 0x07, 0x03, 0x01, 0x00, 0x00, 0x00
@@ -21,13 +18,16 @@ const unsigned char  img_thermometer[] PROGMEM = {
   0x60, 0x9f, 0x80, 0x9f, 0x65,
 };
 
+dht DHT;
 
 void splash() {
   oled.clear();
   oled.setCursor(15, 1);
   oled.print(F("ATtiny85+SSD1306"));
+
   oled.setCursor(42, 3);
   oled.print(F("Example"));
+
   oled.setCursor(35, 7);
   oled.print(F("wokwi.com"));
 }
@@ -40,6 +40,7 @@ void heartBeat() {
   if ((currentTime - startTime) > 200) {
     startTime = currentTime;
     big = 1 - big;
+
     if (big) {
       oled.bitmap(20, 4, 37, 6, img_heart_big);
     } else {
@@ -51,26 +52,30 @@ void heartBeat() {
 void prepareDisplay() {
   unsigned int i, k;
   unsigned char ch[5];
+
   oled.clear();
   oled.begin();
+
   oled.setCursor(20, 1);
   oled.print(F("ATtiny85+SSD1306"));
   oled.setCursor(3, 2);
   oled.print(F("temperature|humidity"));
+
   oled.bitmap(105, 4, 110, 7, img_thermometer);
   oled.setCursor(57, 4);
   oled.print(F("24.0C"));
   oled.setCursor(57, 5);
   oled.print(F("40.0%"));
+
   oled.bitmap(10, 5, 17, 2, img_heart_small);
 }
 
 float getTemperature() {
-  return dht.readTemperature();
+  return DHT.temperature;
 }
 
 float getHumidity() {
-  return dht.readHumidity();
+  return DHT.humidity;
 }
 
 void setup() {
@@ -87,7 +92,10 @@ void setup() {
 void loop() {
   static long startTime = 0;
   long currentTime;
+
+  DHT.read22(DHT22_PIN);
   currentTime = millis();
+
   if ((currentTime - startTime) > 1000) {
     startTime = currentTime;
     float temperature = getTemperature();
@@ -98,6 +106,7 @@ void loop() {
     oled.setCursor(57, 5);
     oled.print(humidity, 1);
     oled.print("%  ");
+
     oled.bitmap(105, 4, 110, 7, img_thermometer);
   }
 
