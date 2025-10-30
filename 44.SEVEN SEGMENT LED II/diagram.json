@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "author": "Sathish Kumar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -29.81, "left": -146.82, "attrs": {} },
+    { "type": "wokwi-7segment", "id": "sevseg1", "top": 25.64, "left": 249.29, "attrs": {} }
+  ],
+  "connections": [
+    [ "uno:GND.1", "sevseg1:COM.1", "black", [ "v-70.57", "h371.58", "v235.14", "h-17.66" ] ],
+    [ "uno:6", "sevseg1:G", "green", [ "v-57.99", "h115.21" ] ],
+    [ "sevseg1:F", "uno:5", "green", [ "v-59.05", "h-58.69", "v-33.29", "h-136.18" ] ],
+    [ "uno:4", "sevseg1:E", "green", [ "v-127.59", "h295.94", "v304.89", "h-103.65" ] ],
+    [ "uno:0", "sevseg1:A", "green", [ "v-22.43", "h171.69" ] ],
+    [ "uno:5V", "sevseg1:COM.2", "red", [ "v23.55", "h208.18", "v-185.36", "h51.45" ] ],
+    [ "sevseg1:D", "uno:3", "green", [ "v18.18", "h47.98", "v-167.2", "h-215.62" ] ],
+    [ "uno:2", "sevseg1:C", "green", [ "v-98.84", "h271.64", "v240.58", "h-74.14" ] ],
+    [ "sevseg1:B", "uno:1", "green", [ "v-62.82", "h-153.32", "v-14.37", "h-40.1", "v3.03" ] ]
+  ],
+  "dependencies": {}
+}
