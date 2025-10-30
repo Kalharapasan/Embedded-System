@@ -1,0 +1,46 @@
+#ifndef __CLOCK_H__
+#define __CLOCK_H__
+
+#include <RTClib.h>
+#include "config.h"
+
+enum AlarmState {
+  ALARM_DISABLED,
+  ALARM_OFF,
+  ALARM_ACTIVE,
+  ALARM_SNOOZED,
+  ALARM_STOPPED,
+};
+
+class Clock {
+public:
+  Clock();
+  void begin();
+  DateTime now();
+  void incrementMinute();
+  void incrementHour();
+  bool alarmEnabled();
+  DateTime alarmTime();
+  bool alarmActive();
+  void toggleAlarm();
+  void snooze();
+  void stopAlarm();
+  void incrementAlarmHour();
+  void incrementAlarmMinute();
+
+protected:
+  bool _isAlarmDueTime();
+
+  #if USE_RTC
+    RTC_DS1307 _rtc;
+  #else 
+    RTC_Millis _rtc;
+  #endif 
+
+  byte _alarm_hour;
+  byte _alarm_minute;
+  AlarmState _alarm_state;
+  unsigned long _alarm_snooze_time;
+};
+
+#endif 
