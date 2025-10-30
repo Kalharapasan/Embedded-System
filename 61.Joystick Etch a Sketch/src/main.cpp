@@ -1,18 +1,53 @@
 #include <Arduino.h>
+#include <MD_MAX72xx.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define	MAX_DEVICES	2
+
+const int maxX = MAX_DEVICES * 8 - 1;
+const int maxY = 7;
+
+#define	CLK_PIN		13
+#define	DATA_PIN	11
+#define	CS_PIN		10
+
+#define VERT_PIN A0
+#define HORZ_PIN A1
+#define SEL_PIN  2
+
+MD_MAX72XX mx = MD_MAX72XX(MD_MAX72XX::PAROLA_HW, CS_PIN, MAX_DEVICES);
+
+int x = 0;
+int y = 0;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  mx.begin();
+  mx.control(MD_MAX72XX::INTENSITY, MAX_INTENSITY / 2);
+  mx.clear();
+
+  pinMode(VERT_PIN, INPUT);
+  pinMode(HORZ_PIN, INPUT);
+  pinMode(SEL_PIN, INPUT_PULLUP);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  int horz = analogRead(HORZ_PIN);
+  int vert = analogRead(VERT_PIN);
+  if (vert < 300) {
+    y = min(y + 1, maxY);
+  }
+  if (vert > 700) {
+    y = max(y - 1, 0);
+  }
+  if (horz > 700) {
+    x = min(x + 1, maxX);
+  }
+  if (horz < 300) {
+    x = max(x - 1, 0);
+  }
+  if (digitalRead(SEL_PIN) == LOW) {
+    mx.clear();
+  }
+  mx.setPoint(y, x, true);
+  mx.update();
+  delay(100);
 }
