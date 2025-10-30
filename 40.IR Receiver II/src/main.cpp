@@ -7,6 +7,8 @@
 IRrecv receiver(PIN_RECEIVER);
 
 LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
+void translateIR();
+void lcdPrint(const char* text);
 
 void setup()
 {
@@ -23,7 +25,7 @@ void loop()
   }
 }
 
-void lcdPrint(char* text)
+void lcdPrint(const char* text)
 {
   lcd.clear();
   lcd.setCursor(0, 0);
