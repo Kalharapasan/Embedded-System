@@ -1,18 +1,27 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+const int analogPin = A0;  
+const int ledCount = 10;    
+
+int ledPins[] = {
+  2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+};  
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  for (int thisLed = 0; thisLed < ledCount; thisLed++) {
+    pinMode(ledPins[thisLed], OUTPUT);
+  }
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  int sensorReading = analogRead(analogPin);
+  int ledLevel = map(sensorReading, 0, 1023, 0, ledCount);
+  for (int thisLed = 0; thisLed < ledCount; thisLed++) {
+    if (thisLed < ledLevel) {
+      digitalWrite(ledPins[thisLed], HIGH);
+    }
+    else {
+      digitalWrite(ledPins[thisLed], LOW);
+    }
+  }
 }
