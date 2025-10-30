@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 160.98, "left": -237.02, "attrs": {} },
+    {
+      "type": "wokwi-biaxial-stepper",
+      "id": "stepper1",
+      "top": -104.95,
+      "left": -179.54,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "stepper1:B1-", "uno:8", "black", [ "v0" ] ],
+    [ "stepper1:A1-", "uno:11", "blue", [ "v53.32", "h-8.32" ] ],
+    [ "stepper1:B1+", "uno:9", "green", [ "v0" ] ],
+    [ "stepper1:A1+", "uno:10", "red", [ "v41.32", "h10.78" ] ],
+    [ "uno:2", "stepper1:B2-", "black", [ "v-54.78", "h-26.57" ] ],
+    [ "uno:3", "stepper1:B2+", "green", [ "v-45.18", "h-26.67" ] ],
+    [ "uno:4", "stepper1:A2+", "red", [ "v-35.58", "h-26.77" ] ],
+    [ "uno:5", "stepper1:A2-", "blue", [ "v-25.98", "h-28.58" ] ]
+  ]
+}
