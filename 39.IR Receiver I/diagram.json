@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Andrew Luhring",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
+    { "type": "wokwi-ir-receiver", "id": "ir1", "top": -279.75, "left": 94.22, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -274.97, "left": 188.8, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -111.25,
+      "left": 364.8,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-ir-remote", "id": "remote1", "top": -48, "left": 508.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "ir1:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "lcd1:A", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "uno:5V", "red", [ "v326.4", "h-49.2" ] ],
+    [
+      "lcd1:VSS",
+      "uno:GND.1",
+      "black",
+      [ "v19.2", "h-38.4", "v-163.2", "h-96", "v182.4", "h28.8" ]
+    ],
+    [
+      "uno:GND.1",
+      "lcd1:K",
+      "black",
+      [ "v-105.6", "h-38.1", "v-201.6", "h422.4", "v163.2", "h-134.4" ]
+    ],
+    [ "lcd1:VDD", "uno:5V", "red", [ "v57.6", "h192.1", "v307.2", "h-259.2" ] ],
+    [ "lcd1:RS", "uno:9", "orange", [ "v96", "h-86.9" ] ],
+    [
+      "lcd1:RW",
+      "uno:GND.1",
+      "black",
+      [ "v19.2", "h-76.9", "v-163.2", "h-96", "v182.4", "h28.8" ]
+    ],
+    [ "lcd1:E", "uno:8", "purple", [ "v105.6", "h-96.4" ] ],
+    [ "lcd1:D4", "uno:7", "green", [ "v115.2", "h-128.4" ] ],
+    [ "lcd1:D5", "uno:6", "purple", [ "v124.8", "h-128.4" ] ],
+    [ "lcd1:D6", "uno:5", "yellow", [ "v134.4", "h-128.4" ] ],
+    [ "lcd1:D7", "uno:4", "gray", [ "v144", "h-124.5" ] ],
+    [ "ir1:VCC", "uno:5V", "red", [ "v28.8", "h-134.4", "v384", "h172.8" ] ],
+    [ "ir1:DAT", "uno:2", "green", [ "v9.6", "h38.4", "v115.2", "h67.2" ] ]
+  ],
+  "serialMonitor": { "display": "auto", "newline": "lf", "convertEol": false },
+  "dependencies": {}
+}
