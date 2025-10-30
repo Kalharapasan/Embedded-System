@@ -7,6 +7,8 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 #define ENCODER_SW  4
 
 int counter = 0;
+
+
 void readEncoder();
 
 void setup() {
@@ -27,6 +29,7 @@ void readEncoder() {
     counter--; 
   }
 }
+
 int getCounter() {
   int result;
   noInterrupts();
