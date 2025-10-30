@@ -6,6 +6,9 @@
 
 LiquidCrystal lcd(9, 8, 7, 6, 5, 4);
 
+// forward declaration so loop() can call it before the definition below
+void translateIR();
+
 void initializeReceiver() {
   IrReceiver.begin(IR_RECEIVE_PIN);
 }
@@ -27,7 +30,7 @@ void loop() {
   }
 }
 
-void lcdPrint(char* text) {
+void lcdPrint(const char* text) {
   lcd.clear();
   lcd.setCursor(0, 0); 
   lcd.print("button pressed:");
