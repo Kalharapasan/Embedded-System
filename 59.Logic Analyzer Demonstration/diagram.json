@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "Koepel",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": 9, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 205.8, "left": 364.9, "attrs": {} },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic1",
+      "top": 38.75,
+      "left": 355.2,
+      "attrs": { "channelNames": "Start_Stop,TX,SCL,SDA,Tone,toggleTX" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.2", "rtc1:GND", "black", [ "v0" ] ],
+    [ "uno:5V", "rtc1:5V", "red", [ "v0" ] ],
+    [ "uno:A4", "rtc1:SDA", "LimeGreen", [ "v0" ] ],
+    [ "uno:A5", "rtc1:SCL", "Gold", [ "v0" ] ],
+    [ "uno:GND.2", "logic1:GND", "black", [ "v28.7", "h138.3", "v-96" ] ],
+    [ "rtc1:SDA", "logic1:D3", "LimeGreen", [ "h-38.4", "v-163.5" ] ],
+    [ "rtc1:SCL", "logic1:D2", "Gold", [ "h-48", "v-182.6" ] ],
+    [ "uno:1", "logic1:D1", "Orange", [ "v-19.2", "h42.6", "v67.2" ] ],
+    [ "uno:13", "logic1:D0", "Purple", [ "v-48", "h192.4", "v86.4" ] ],
+    [ "uno:8", "logic1:D4", "DarkTurquoise", [ "v-28.8", "h134.8", "v105.6" ] ],
+    [ "uno:11", "logic1:D5", "PaleVioletRed", [ "v-38.4", "h154.2", "v124.8" ] ]
+  ]
+}
