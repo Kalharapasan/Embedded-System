@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 20, "attrs": {} },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -9.72,
+      "left": 264.35,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix1",
+      "top": 9.03,
+      "left": 52.86,
+      "attrs": { "chain": "2" }
+    }
+  ],
+  "connections": [
+    [ "joystick1:HORZ", "uno:A1", "green", [ "v0", "*", "v12" ] ],
+    [ "joystick1:VERT", "uno:A0", "purple", [ "v0", "*", "v16" ] ],
+    [ "joystick1:SEL", "uno:2", "blue", [ "v0", "*", "v-12" ] ],
+    [ "joystick1:GND", "uno:GND.3", "black", [ "v0", "*", "v20" ] ],
+    [ "joystick1:VCC", "uno:5V", "red", [ "v0", "*", "v24" ] ],
+    [ "matrix1:CS", "uno:10", "blue", [ "h8", "*", "v-24" ] ],
+    [ "matrix1:DIN", "uno:11", "green", [ "h12", "*", "v-20" ] ],
+    [ "matrix1:CLK", "uno:13", "orange", [ "h4", "*", "v-28" ] ],
+    [ "matrix1:GND", "uno:GND.1", "black", [ "h16", "*", "v-12" ] ],
+    [ "joystick1:VCC", "matrix1:V+", "red", [ "v7.04", "h-38.02", "v-84.67" ] ]
+  ]
+}
