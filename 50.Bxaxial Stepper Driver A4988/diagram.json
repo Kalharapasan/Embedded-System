@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 70.57, "left": -151.67, "attrs": {} },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 81.8, "left": 226, "rotate": 270, "attrs": {} },
+    {
+      "type": "wokwi-biaxial-stepper",
+      "id": "stepper1",
+      "top": -181.4,
+      "left": 154.76,
+      "rotate": 270,
+      "attrs": { "display": "angle" }
+    },
+    { "type": "wokwi-a4988", "id": "drv2", "top": 81.8, "left": 322, "rotate": 270, "attrs": {} }
+  ],
+  "connections": [
+    [ "drv1:1B", "stepper1:B1-", "black", [ "v0" ] ],
+    [ "drv1:1A", "stepper1:B1+", "green", [ "v0" ] ],
+    [ "stepper1:A1+", "drv1:2A", "blue", [ "v0" ] ],
+    [ "stepper1:A1-", "drv1:2B", "red", [ "v0" ] ],
+    [ "drv1:SLEEP", "drv1:RESET", "green", [ "v15.92", "h-9.9" ] ],
+    [ "drv2:SLEEP", "drv2:RESET", "green", [ "v15.92", "h-9.9" ] ],
+    [ "stepper1:A2-", "drv2:2B", "red", [ "v67.2", "h57.59" ] ],
+    [ "stepper1:A2+", "drv2:2A", "blue", [ "v57.6", "h57.59" ] ],
+    [ "stepper1:B2+", "drv2:1A", "green", [ "v48", "h57.59" ] ],
+    [ "stepper1:B2-", "drv2:1B", "black", [ "v38.4", "h57.59" ] ],
+    [ "uno:2", "drv2:STEP", "green", [ "v-21.97", "h107.17", "v124.8", "h182.4" ] ],
+    [ "uno:3", "drv1:STEP", "orange", [ "v-31.57", "h126.27", "v124.8", "h76.8" ] ]
+  ]
+}

@@ -1,18 +1,25 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define MOTOR1_PIN 2
+#define MOTOR2_PIN 3
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  pinMode(MOTOR1_PIN, OUTPUT);
+  pinMode(MOTOR2_PIN, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  // Move motor 1
+  for (int i = 0; i < 200; i++) {
+    digitalWrite(MOTOR1_PIN, HIGH);
+    digitalWrite(MOTOR1_PIN, LOW);
+    delay(10);
+  }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  // Move motor 2
+  for (int i = 0; i < 200; i++) {
+    digitalWrite(MOTOR2_PIN, HIGH);
+    digitalWrite(MOTOR2_PIN, LOW);
+    delay(10);
+  }
 }
