@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 75.62, "left": -0.55, "attrs": {} },
+    { "type": "wokwi-dip-switch-8", "id": "sw1", "top": 8.81, "left": 181.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -138.85,
+      "left": 7.93,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "sw1:2b", "sw1:1b", "black", [ "v0" ] ],
+    [ "sw1:3b", "sw1:2b", "black", [ "v0" ] ],
+    [ "sw1:4b", "sw1:3b", "black", [ "v0" ] ],
+    [ "sw1:5b", "sw1:4b", "black", [ "v0" ] ],
+    [ "sw1:6b", "sw1:5b", "black", [ "v0" ] ],
+    [ "sw1:7b", "sw1:6b", "black", [ "v0" ] ],
+    [ "sw1:8b", "sw1:7b", "black", [ "v0" ] ],
+    [ "uno:GND.1", "sw1:1b", "black", [ "v0" ] ],
+    [ "sw1:1a", "uno:7", "green", [ "v0" ] ],
+    [ "sw1:2a", "uno:6", "green", [ "v0" ] ],
+    [ "sw1:3a", "uno:5", "green", [ "v0" ] ],
+    [ "sw1:4a", "uno:4", "green", [ "v0" ] ],
+    [ "sw1:5a", "uno:3", "green", [ "v0" ] ],
+    [ "sw1:6a", "uno:2", "green", [ "v0" ] ],
+    [ "sw1:7a", "uno:1", "green", [ "v0" ] ],
+    [ "sw1:8a", "uno:0", "green", [ "v0" ] ],
+    [ "lcd1:SCL", "uno:A5", "orange", [ "h-21.15", "v368.51", "h258.38" ] ],
+    [ "lcd1:SDA", "uno:A4", "purple", [ "h-28.09", "v383.21", "h262.71" ] ],
+    [ "lcd1:GND", "uno:GND.3", "black", [ "h-40.73", "v414.05", "h211.2" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h-35.93", "v399.75", "h196.8" ] ]
+  ]
+}
