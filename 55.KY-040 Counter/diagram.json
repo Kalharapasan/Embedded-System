@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "uno", "top": 164.65, "left": -0.17, "attrs": {} },
+    { "type": "wokwi-ky-040", "id": "encoder1", "top": 73.62, "left": -16.85, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 71.46,
+      "left": 196.48,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "encoder1:CLK", "uno:2", "blue", [ "h24", "v58", "h-66" ] ],
+    [ "encoder1:DT", "uno:3", "green", [ "h18", "v42", "h-21" ] ],
+    [ "encoder1:SW", "uno:4", "purple", [ "h11", "v28", "h-24" ] ],
+    [ "uno:GND.2", "encoder1:GND", "black", [ "v-16", "h18", "v-45" ] ],
+    [ "uno:GND.2", "lcd1:GND", "black", [ "v-16", "h18", "v-53" ] ],
+    [ "lcd1:SDA", "uno:A4", "brown", [ "h-8", "v135", "h-70" ] ],
+    [ "lcd1:SCL", "uno:A5", "orange", [ "h-14", "v119", "h-103" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h-21", "v129", "h-65" ] ],
+    [ "uno:5V", "encoder1:VCC", "red", [ "v15", "h55", "v-165" ] ]
+  ]
+}
