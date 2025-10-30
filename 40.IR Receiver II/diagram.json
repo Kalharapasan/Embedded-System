@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "author": "Anderson Costa",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-nano",
+      "id": "nano",
+      "top": 210,
+      "left": 245,
+      "rotate": 0,
+      "hide": false,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 25,
+      "left": 235,
+      "rotate": 0,
+      "hide": false,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 160,
+      "left": 450,
+      "rotate": 0,
+      "hide": false,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-ir-receiver",
+      "id": "ir",
+      "top": 185,
+      "left": 450,
+      "rotate": 0,
+      "hide": false,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-ir-remote",
+      "id": "remote1",
+      "top": 20,
+      "left": 70,
+      "rotate": 0,
+      "hide": false,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "nano:GND.2", "ds1307:GND", "black", [ "v20", "*", "v0" ] ],
+    [ "nano:5V", "ds1307:5V", "red", [ "v8", "*", "h-25", "v0" ] ],
+    [ "nano:GND.1", "lcd:VSS", "black", [ "v12", "*", "h-30", "v18" ] ],
+    [ "nano:GND.1", "lcd:K", "black", [ "v12", "*", "h-174", "v18" ] ],
+    [ "nano:GND.1", "lcd:RW", "black", [ "v12", "*", "h-68", "v18" ] ],
+    [ "nano:5V", "lcd:VDD", "red", [ "v8", "*", "h-35", "v22" ] ],
+    [ "nano:5V", "r1:2", "red", [ "v8", "h166", "v-112", "h50" ] ],
+    [ "nano:12", "lcd:RS", "orange", [ "v-32", "*", "h0", "v20" ] ],
+    [ "nano:11", "lcd:E", "purple", [ "v-28", "*", "h0", "v20" ] ],
+    [ "nano:10", "lcd:D4", "green", [ "v-24", "*", "h0", "v20" ] ],
+    [ "nano:9", "lcd:D5", "brown", [ "v-20", "*", "h0", "v20" ] ],
+    [ "nano:8", "lcd:D6", "gold", [ "v-16", "*", "h0", "v20" ] ],
+    [ "nano:7", "lcd:D7", "gray", [ "v-12", "*", "h0", "v20" ] ],
+    [ "nano:A4", "ds1307:SDA", "orange", [ "v16", "*", "h-20" ] ],
+    [ "nano:A5", "ds1307:SCL", "purple", [ "v20", "*", "h-15" ] ],
+    [ "r1:1", "lcd:A", "red", [] ],
+    [ "nano:GND.1", "ir:GND", "black", [ "v12", "h0" ] ],
+    [ "nano:5V", "ir:VCC", "red", [ "v0", "h0", "v8", "h0" ] ],
+    [ "nano:2", "ir:DAT", "green", [ "v-8", "h84", "v-26", "h72", "v92" ] ]
+  ]
+}
