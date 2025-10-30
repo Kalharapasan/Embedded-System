@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "Ariella Eliassaf",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno1", "top": 77.4, "left": 18.6, "attrs": {} },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "gas1",
+      "top": 309.9,
+      "left": 16.6,
+      "attrs": { "threshold": "4.4" }
+    }
+  ],
+  "connections": [
+    [ "gas1:VCC", "uno1:3.3V", "red", [ "h0" ] ],
+    [ "gas1:GND", "uno1:GND.3", "black", [ "h0" ] ],
+    [ "gas1:DOUT", "uno1:8", "violet", [ "h163.2", "v-269.1", "h-125.2" ] ],
+    [ "gas1:AOUT", "uno1:A0", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}

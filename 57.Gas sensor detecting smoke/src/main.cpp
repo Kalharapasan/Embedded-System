@@ -1,18 +1,23 @@
 #include <Arduino.h>
+#define MQ2pin 8
 
-// put function declarations here:
-int myFunction(int, int);
+int sensorValue;  
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+	Serial.begin(9600); 
+	Serial.println("MQ2 warming up");
+	delay(200);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+	sensorValue = digitalRead(MQ2pin); 
+	Serial.print("Digital Output: ");
+	Serial.print(sensorValue);
+	if (sensorValue) {
+		Serial.println("  |  Smoke: -");
+	} else {
+		Serial.println("  |  Smoke: Detected!");
+	}
+	
+	delay(2000); 
 }
