@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "author": "Tomas Hubelbauer, Koepel",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "u",
+      "top": 33.94,
+      "left": 793.3,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "1",
+      "top": 0,
+      "left": 260,
+      "attrs": { "chain": "6", "color": "white" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "2",
+      "top": 75,
+      "left": 260,
+      "attrs": { "chain": "6", "color": "white" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "3",
+      "top": 150,
+      "left": 260,
+      "attrs": { "chain": "6", "color": "white" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "4",
+      "top": 225,
+      "left": 260,
+      "attrs": { "chain": "6", "color": "white" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "5",
+      "top": 300,
+      "left": 260,
+      "attrs": { "chain": "6", "color": "white" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "6",
+      "top": 375,
+      "left": 260,
+      "attrs": { "chain": "6", "color": "white" }
+    }
+  ],
+  "connections": [
+    [ "u:GND.2", "1:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "1:V+", "red", [ "*", "h12" ] ],
+    [ "u:0", "1:DIN", "orange", [ "h20", "v25", "*", "h54" ] ],
+    [ "u:1", "1:CLK", "blue", [ "h23", "v38", "*", "h18" ] ],
+    [ "u:2", "1:CS", "green", [ "h26", "v51", "*", "h36" ] ],
+    [ "u:GND.2", "2:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "2:V+", "red", [ "*", "h12" ] ],
+    [ "u:3", "2:DIN", "orange", [ "h29", "v64", "*", "h57" ] ],
+    [ "u:4", "2:CLK", "blue", [ "h32", "v77", "*", "h21" ] ],
+    [ "u:5", "2:CS", "green", [ "h35", "v90", "*", "h39" ] ],
+    [ "u:GND.2", "3:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "3:V+", "red", [ "*", "h12" ] ],
+    [ "u:6", "3:DIN", "orange", [ "h38", "v103", "*", "h60" ] ],
+    [ "u:7", "3:CLK", "blue", [ "h41", "v116", "*", "h24" ] ],
+    [ "u:8", "3:CS", "green", [ "h44", "v136", "*", "h42" ] ],
+    [ "u:GND.2", "4:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "4:V+", "red", [ "*", "h12" ] ],
+    [ "u:9", "4:DIN", "orange", [ "h47", "v149", "*", "h63" ] ],
+    [ "u:10", "4:CLK", "blue", [ "h50", "v162", "*", "h27" ] ],
+    [ "u:11", "4:CS", "green", [ "h53", "v175", "*", "h45" ] ],
+    [ "u:GND.2", "5:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "5:V+", "red", [ "*", "h12" ] ],
+    [ "u:A0", "5:DIN", "orange", [ "*", "h66" ] ],
+    [ "u:A1", "5:CLK", "blue", [ "*", "h30" ] ],
+    [ "u:A2", "5:CS", "green", [ "*", "h48" ] ],
+    [ "u:GND.2", "6:GND", "black", [ "*", "h6" ] ],
+    [ "u:5V", "6:V+", "red", [ "*", "h12" ] ],
+    [ "u:A3", "6:DIN", "orange", [ "*", "h69" ] ],
+    [ "u:A4", "6:CLK", "blue", [ "*", "h33" ] ],
+    [ "u:A5", "6:CS", "green", [ "*", "h51" ] ]
+  ],
+  "serialMonitor": { "display": "never" }
+}
