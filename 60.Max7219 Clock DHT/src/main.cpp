@@ -16,7 +16,7 @@
 #define MAX_MESG   20
 #define DS1307_ADDRESS 0x68
 #define DHTPIN 2
-#define DHTTYPE DHT22
+#define DHTTYPE_NONE
 #define TIMEDHT 1000
 
 
@@ -32,9 +32,12 @@ uint8_t degC[] = { 6, 3, 3, 56, 68, 68, 68 };
 uint8_t degF[] = { 6, 3, 3, 124, 20, 20, 4 }; 
 uint8_t clear = 0x00;
 uint32_t timerDHT = TIMEDHT;
-
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht;
 MD_Parola P = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
+uint8_t decToBcd(uint8_t value);
+uint8_t bcdToDec(uint8_t value);
+char *mon2str(uint8_t mon, char *psz, uint8_t len);
+char *dow2str(uint8_t code, char *psz, uint8_t len);
 
 void beginDS1307()
 {
@@ -77,9 +80,10 @@ void getTemperature()
 {
   if ((millis() - timerDHT) > TIMEDHT) {
     timerDHT = millis();
-    humidity = dht.readHumidity();
-    celsius = dht.readTemperature();
-    fahrenheit = dht.readTemperature(true);
+    // Use installed DHT library API
+    humidity = dht.getHumidity();
+    celsius = dht.getTemperature();
+    fahrenheit = DHT::toFahrenheit(celsius);
     if (isnan(humidity) || isnan(celsius) || isnan(fahrenheit)) {
       Serial.println("Failed to read from DHT sensor!");
       return;
@@ -121,20 +125,15 @@ char *dow2str(uint8_t code, char *psz, uint8_t len)
 void setup(void)
 {
   Wire.begin();
-
   P.begin(2);
   P.setInvert(false);
-
   P.setZone(0,  MAX_DEVICES - 4, MAX_DEVICES - 1);
   P.setZone(1, MAX_DEVICES - 4, MAX_DEVICES - 1);
-
   P.displayZoneText(1, szTime, PA_CENTER, SPEED_TIME, PAUSE_TIME, PA_PRINT, PA_NO_EFFECT);
   P.displayZoneText(0, szMesg, PA_CENTER, SPEED_TIME, 0, PA_PRINT , PA_NO_EFFECT);
-
   P.addChar('$', degC);
   P.addChar('&', degF);
-
-  dht.begin();
+  dht.setup(DHTPIN, DHT::DHT22);
 }
 
 void loop(void)
