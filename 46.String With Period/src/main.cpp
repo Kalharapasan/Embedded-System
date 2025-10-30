@@ -1,13 +1,14 @@
 #include <Arduino.h>
+#include <string.h>
 #include "SevSeg.h"
 SevSeg sevseg; 
 
 #define MAX_NUMBER_STRINGS 12
-#define MAX_STRING_SIZE 8
+#define MAX_STRING_SIZE 12
 char testStrings[MAX_NUMBER_STRINGS][MAX_STRING_SIZE];
 
 #define PATTERN_CHANGE_TIME 1000
-unsigned long timer = millis() - PATTERN_CHANGE_TIME;
+unsigned long timer;
 byte testStringsPos = 0;
 
 void setup() {
@@ -21,6 +22,7 @@ void setup() {
 
   sevseg.begin(hardwareConfig, numDigits, digitPins, segmentPins, resistorsOnSegments, updateWithDelays, leadingZeros);
   sevseg.setBrightness(90);
+  timer = millis() - PATTERN_CHANGE_TIME;
   strcpy(testStrings[0], "A..BC.");
   strcpy(testStrings[1], "....");
   strcpy(testStrings[2], ".   ");
