@@ -4,8 +4,6 @@
 
 #define PIN_RECEIVER 2 
 
-IRrecv receiver(PIN_RECEIVER);
-
 LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
 void translateIR();
 void lcdPrint(const char* text);
@@ -14,14 +12,14 @@ void setup()
 {
   lcd.begin(16, 2);
   lcd.print("<press a button>");
-  receiver.enableIRIn(); 
+  IrReceiver.begin(PIN_RECEIVER);
 }
 
 void loop()
 {
-  if (receiver.decode()) {
+  if (IrReceiver.decode()) {
     translateIR();
-    receiver.resume();  
+    IrReceiver.resume();
   }
 }
 
@@ -33,12 +31,12 @@ void lcdPrint(const char* text)
   lcd.setCursor(0, 1);
   lcd.print(text);
   lcd.print(" code: ");
-  lcd.print(receiver.decodedIRData.command);
+  lcd.print(IrReceiver.decodedIRData.command);
 }
 
 void translateIR()
 {
-  switch (receiver.decodedIRData.command) {
+  switch (IrReceiver.decodedIRData.command) {
     case 162:
       lcdPrint("POWER");
       break;
@@ -101,7 +99,7 @@ void translateIR()
       break;
     default:
       lcd.clear();
-      lcd.print(receiver.decodedIRData.command);
+      lcd.print(IrReceiver.decodedIRData.command);
       lcd.print(" other button");
   }
 }
