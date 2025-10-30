@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include <Wire.h>
+#include <string.h>
+
+void serialToggle(const char *text);
 
 void setup() 
 {
@@ -32,9 +35,10 @@ void loop() {}
 #define serialToggleLOW    bitClear(PORTB,3)
 #define serialToggleCYCLES 1665
 
-void serialToggle( char *text)
+void serialToggle( const char *text)
 {
-  for( int i=0; i<strlen(text); i++)      
+  size_t len = strlen(text);
+  for( size_t i = 0; i < len; i++)      
   {
     noInterrupts();                      
     serialToggleLOW;                      
