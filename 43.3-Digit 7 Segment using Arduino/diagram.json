@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 128, "left": 20, "attrs": {} },
+    {
+      "type": "wokwi-7segment",
+      "id": "display",
+      "top": 28,
+      "left": 64,
+      "attrs": { "digits": "3", "common": "anode" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 171.88,
+      "left": 370.43,
+      "rotate": 90,
+      "attrs": { "color": "green", "bounce": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 271.54,
+      "left": 448.77,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "uno:2", "display:DIG1", "blue", [ "v-12", "h24", "*", "v-24" ] ],
+    [ "uno:3", "display:DIG2", "orange", [ "v-16", "h28", "*", "v-16" ] ],
+    [ "uno:4", "display:DIG3", "red", [ "v-20", "h32", "*", "v-12" ] ],
+    [ "uno:5", "display:DIG4", "purple", [ "v-32", "*", "h0" ] ],
+    [ "uno:6", "display:A", "gray", [ "v-24", "h46", "*", "v-20" ] ],
+    [ "uno:7", "display:B", "green", [ "v-28", "h50", "*", "v-8" ] ],
+    [ "uno:8", "display:C", "blue", [ "v-28", "*", "h0" ] ],
+    [ "uno:9", "display:D", "orange", [ "v-20", "*", "h0" ] ],
+    [ "uno:10", "display:E", "red", [ "v-16", "*", "h0" ] ],
+    [ "uno:11", "display:F", "purple", [ "v-12", "h-104", "*", "v-16" ] ],
+    [ "uno:12", "display:G", "gray", [ "v-24", "*", "h0" ] ],
+    [ "uno:13", "display:DP", "green", [ "v-28", "*", "h0" ] ],
+    [ "btn1:1.r", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "uno:GND.3", "green", [ "h0.67", "v79.55", "h-238.09" ] ],
+    [ "btn1:2.r", "uno:3.3V", "green", [ "v136.67", "h-1.65" ] ],
+    [ "btn1:1.l", "uno:5", "green", [ "v-39.57", "h-186.93" ] ]
+  ],
+  "dependencies": {}
+}
