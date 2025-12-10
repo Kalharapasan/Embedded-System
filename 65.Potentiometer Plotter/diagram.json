@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 219.5, "left": 191.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "pot1:GND", "uno:GND.2", "black", [ "v13", "h-40" ] ],
+    [ "pot1:SIG", "uno:A0", "green", [ "v14", "h49", "v-90", "h-66" ] ],
+    [ "uno:VIN", "pot1:VCC", "red", [ "v20", "h76", "v79", "h-33" ] ]
+  ],
+  "serialMonitor": { "display": "plotter" },
+  "dependencies": {}
+}
