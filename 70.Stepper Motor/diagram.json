@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 160.98, "left": -237.02, "attrs": {} },
+    { "type": "wokwi-stepper-motor", "id": "stepper1", "top": -139.16, "left": -191.26, "attrs": {} }
+  ],
+  "connections": [
+    [ "stepper1:B-", "uno:8", "green", [ "v0" ] ],
+    [ "stepper1:A-", "uno:11", "green", [ "v0" ] ],
+    [ "stepper1:B+", "uno:9", "green", [ "v0" ] ],
+    [ "stepper1:A+", "uno:10", "green", [ "v0" ] ]
+  ]
+}

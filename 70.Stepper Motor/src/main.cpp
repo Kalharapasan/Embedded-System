@@ -1,18 +1,19 @@
 #include <Arduino.h>
+#include <Stepper.h>
 
-// put function declarations here:
-int myFunction(int, int);
+const int stepsPerRevolution = 200;  
+Stepper myStepper(stepsPerRevolution, 8, 9, 10, 11);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  myStepper.setSpeed(60);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  Serial.println("clockwise");
+  myStepper.step(stepsPerRevolution);
+  delay(500);
+  Serial.println("counterclockwise");
+  myStepper.step(-stepsPerRevolution);
+  delay(500);
 }
