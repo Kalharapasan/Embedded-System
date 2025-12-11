@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 160.98, "left": -237.02, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "sw1",
+      "top": -158.66,
+      "left": -191.75,
+      "attrs": { "display": "steps", "arrow": "white", "gearRatio": "200:1023" }
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot1",
+      "top": 75.88,
+      "left": -430.15,
+      "rotate": 270,
+      "attrs": { "travelLength": "30", "value": "1023" }
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "pot2",
+      "top": 71.75,
+      "left": -564.27,
+      "rotate": 270,
+      "attrs": { "travelLength": "30", "value": "35" }
+    },
+    {
+      "type": "chip-scope",
+      "id": "scope1",
+      "top": 79.81,
+      "left": 44.59,
+      "attrs": {
+        "sampleTimeUs": "100",
+        "sampleTimeMs": "0",
+        "triggerChannel": "0",
+        "triggerMode": "1",
+        "crtColor": "0",
+        "trace0Color": "14",
+        "trace1Color": "12",
+        "trace2Color": "10",
+        "trace3Color": "2"
+      }
+    }
+  ],
+  "connections": [
+    [ "sw1:B-", "uno:2", "green", [ "v48.92", "h67.3" ] ],
+    [ "sw1:B+", "uno:3", "green", [ "v57.7", "h67.41" ] ],
+    [ "sw1:A+", "uno:4", "green", [ "v64.52", "h67.51" ] ],
+    [ "sw1:A-", "uno:5", "green", [ "v72.33", "h67.61" ] ],
+    [ "pot1:GND", "uno:GND.1", "black", [ "v-14.98", "h89.98", "v129.26", "h14.07" ] ],
+    [ "pot1:VCC", "uno:5V", "red", [ "v169.43", "h258.8" ] ],
+    [ "pot1:SIG", "uno:A0", "green", [ "v155.36", "h1.41", "v4.4", "h58.91" ] ],
+    [ "pot2:GND", "pot1:GND", "black", [ "v-43.2", "h61.87" ] ],
+    [ "pot2:SIG", "uno:A1", "green", [ "v187.37", "h405.65" ] ],
+    [ "pot1:VCC", "pot2:VCC", "red", [ "v20.43", "h-43.71" ] ],
+    [ "scope1:D0", "sw1:B-", "green", [ "h0" ] ],
+    [ "scope1:D1", "sw1:B+", "green", [ "h0" ] ],
+    [ "scope1:D2", "sw1:A+", "green", [ "h0" ] ],
+    [ "scope1:D3", "sw1:A-", "green", [ "h0" ] ]
+  ],
+  "dependencies": { "chip-scope": "github:Dlloydev/Wokwi-Chip-Scope@1.0.7" }
+}
