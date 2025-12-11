@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "author": "Koepel",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": -34.8,
+      "left": -40,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": -105.64,
+      "left": 247.03,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg2",
+      "top": 9.56,
+      "left": 247.03,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg3",
+      "top": 124.76,
+      "left": 247.03,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "sevseg1:CLK", "uno:8", "green", [ "h28.8", "v76.8", "h-230.4", "v168.7" ] ],
+    [ "sevseg1:DIO", "uno:9", "green", [ "h19.2", "v57.6", "h-230.4", "v168.8" ] ],
+    [ "uno:5V", "sevseg1:VCC", "red", [ "h-28.7", "v-217", "h489.6", "v67.2" ] ],
+    [ "uno:5V", "sevseg2:VCC", "red", [ "h-28.7", "v-217", "h489.6", "v182.4" ] ],
+    [ "uno:5V", "sevseg3:VCC", "red", [ "h-28.7", "v-217", "h489.6", "v297.6" ] ],
+    [ "uno:GND.2", "sevseg3:GND", "black", [ "h-28.7", "v138.3", "h480", "v-57.6" ] ],
+    [ "uno:GND.2", "sevseg2:GND", "black", [ "h-28.7", "v138.3", "h480", "v-172.8" ] ],
+    [ "uno:GND.2", "sevseg1:GND", "black", [ "h-28.7", "v138.3", "h480", "v-288" ] ],
+    [ "uno:7", "sevseg2:DIO", "green", [ "h38.4", "v-15.6", "h211.2", "v-19.2" ] ],
+    [ "uno:6", "sevseg2:CLK", "green", [ "h48", "v-15.5", "h211.2", "v-76.8" ] ],
+    [ "uno:5", "sevseg3:DIO", "green", [ "h28.8", "v80.6", "h220.8", "v-19.2" ] ],
+    [ "uno:4", "sevseg3:CLK", "green", [ "h19.2", "v80.7", "h240", "v-67.2" ] ]
+  ],
+  "dependencies": {}
+}
