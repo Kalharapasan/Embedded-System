@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "Michael Möller",
+  "editor": "wokwi",
+"parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 160.98, "left": -237.02, "attrs": {} },
+    { "type": "wokwi-stepper-motor", "id": "sw1",
+     "top": -139.16, "left": -191.26, "attrs": {"gearRatio": "2:1", "display": "steps"} }
+  ],
+  "connections": [
+    [ "sw1:B-", "uno:8", "green", [ "v0" ] ],
+    [ "sw1:A-", "uno:11", "yellow", [ "v0" ] ],
+    [ "sw1:B+", "uno:9", "red", [ "v0" ] ],
+    [ "sw1:A+", "uno:10", "blue", [ "v0" ] ]
+  ]
+}
