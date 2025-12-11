@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": -124.84,
+      "left": 7.03,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "sevseg1:CLK", "uno:2", "green", [ "h0" ] ],
+    [ "sevseg1:DIO", "uno:3", "green", [ "h0" ] ],
+    [ "uno:GND.1", "sevseg1:GND", "black", [ "v-28.2", "h76.5", "v-48" ] ],
+    [ "uno:5V", "sevseg1:VCC", "red", [ "v19.1", "h119", "v-288" ] ]
+  ]
+}

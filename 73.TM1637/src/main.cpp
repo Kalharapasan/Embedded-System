@@ -1,18 +1,28 @@
 #include <Arduino.h>
+#include <TM1637.h>
 
-// put function declarations here:
-int myFunction(int, int);
+const int CLK = 2;
+const int DIO = 3;
+
+TM1637 tm(CLK, DIO);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  tm.init();
+  tm.set(BRIGHT_TYPICAL);
 }
+
+unsigned int counter = 0;
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  tm.display(0, (counter / 1000) % 10);
+  tm.display(1, (counter / 100) % 10);
+  tm.display(2, (counter / 10) % 10);
+  tm.display(3, counter % 10);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  counter++;
+  if (counter == 10000) {
+    counter = 0;
+  }
+
+  delay(100);
 }
