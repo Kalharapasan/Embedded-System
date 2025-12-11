@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": -51,
+      "left": -200.2,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "board-nokia-5110", "id": "lcd", "top": 49.02, "left": 139.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "lcd:CLK", "uno:3", "orange", [ "h1.02", "v70.07", "h-163.2", "v-138.4" ] ],
+    [ "lcd:DIN", "uno:4", "green", [ "h1.02", "v60.47", "h-144", "v-138.3" ] ],
+    [ "lcd:DC", "uno:5", "purple", [ "h1.02", "v50.87", "h-124.8", "v-138.2" ] ],
+    [ "lcd:CE", "uno:7", "blue", [ "h1.02", "v41.27", "h-96", "v-147.6" ] ],
+    [ "lcd:RST", "uno:6", "violet", [ "v31.67", "h-94.98", "v-128.5" ] ],
+    [ "uno:GND.3", "lcd:GND", "black", [ "h-38.3", "v196", "h451.2", "v-79.67" ] ],
+    [ "lcd:VCC", "uno:3.3V", "red", [ "v89.27", "h-440.58", "v-234.6" ] ]
+  ],
+  "dependencies": {}
+}
