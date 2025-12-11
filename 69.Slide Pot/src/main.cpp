@@ -1,18 +1,20 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include <Servo.h>
+
+Servo myservo;  
+
+int potpin = 0;  
+int val;    
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  myservo.attach(9);  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  val = analogRead(potpin);            
+  val = map(val, 0, 1023, 0, 180);     
+  myservo.write(val);                 
+  delay(15);                           
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
